@@ -1,0 +1,245 @@
+
+*{
+    margin:0;
+    box-sizing: border-box;
+}
+body,html{
+    overflow-y: hidden;
+    background-color: rgb(59, 59, 147);
+}
+.die {
+  height: 60px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 12px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.25s ease-in-out;
+  position: relative;
+}
+
+.die:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+.die[style*="#59E391"] {
+  background: linear-gradient(145deg, #59e391, #44c37a);
+  box-shadow: 0 6px 14px rgba(89, 227, 145, 0.6);
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: #222;
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+}
+
+/* 🎲 Dot layouts for each value */
+.dots-1 .dot:nth-child(1) {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dots-2 .dot:nth-child(1) { top: 20%; left: 20%; }
+.dots-2 .dot:nth-child(2) { bottom: 20%; right: 20%; }
+
+.dots-3 .dot:nth-child(1) { top: 20%; left: 20%; }
+.dots-3 .dot:nth-child(2) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.dots-3 .dot:nth-child(3) { bottom: 20%; right: 20%; }
+
+.dots-4 .dot:nth-child(1) { top: 20%; left: 20%; }
+.dots-4 .dot:nth-child(2) { top: 20%; right: 20%; }
+.dots-4 .dot:nth-child(3) { bottom: 20%; left: 20%; }
+.dots-4 .dot:nth-child(4) { bottom: 20%; right: 20%; }
+
+.dots-5 .dot:nth-child(1) { top: 20%; left: 20%; }
+.dots-5 .dot:nth-child(2) { top: 20%; right: 20%; }
+.dots-5 .dot:nth-child(3) { bottom: 20%; left: 20%; }
+.dots-5 .dot:nth-child(4) { bottom: 20%; right: 20%; }
+.dots-5 .dot:nth-child(5) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+.dots-6 .dot:nth-child(1) { top: 20%; left: 20%; }
+.dots-6 .dot:nth-child(2) { top: 20%; right: 20%; }
+.dots-6 .dot:nth-child(3) { top: 50%; left: 20%; transform: translateY(-50%); }
+.dots-6 .dot:nth-child(4) { top: 50%; right: 20%; transform: translateY(-50%); }
+.dots-6 .dot:nth-child(5) { bottom: 20%; left: 20%; }
+.dots-6 .dot:nth-child(6) { bottom: 20%; right: 20%; }
+.die-container {
+    display: grid;
+    grid-template-columns: repeat(5, 50px);
+    grid-template-rows: repeat(2, 1fr);   
+    gap: 10px;
+}
+.main{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:88vh;
+    flex-direction: column;
+    border:30px solid white;
+    margin:0;
+    position:relative;
+    width:100%;
+    border-radius: 30px;
+    background-color: white;
+}
+.dice-Button{
+ background: linear-gradient(135deg, #4facfe, #9b59b6);
+ color:white;
+ height:30px;
+ width:100px;
+ margin:2em;
+ border-radius: 5px;
+ border: none;
+ font-size: 1.2rem;
+ margin-bottom: 10px;
+ box-shadow: 2px 2px 3px gray;
+ cursor: pointer;
+ font-weight: 600;
+ transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.dice-Button:hover{
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+.new-game{
+    margin-top: 0;
+    margin-bottom: 0;
+    padding:5px;
+    background-color: hsl(155, 71%, 37%);
+    width:150px;
+    margin-top:2rem;
+     cursor: pointer;
+     font-weight: 600;
+     transition: transform 0.2s ease, opacity 0.2s ease;
+     background: linear-gradient(135deg, #00c853, #aeea00);
+}
+.new-game:hover{
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+.the-Description {
+    max-width: 500px;
+    margin: 1em auto 2em auto;
+    text-align: center;
+
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+
+    color: #333;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+
+    padding: 0.8em 1.2em;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(6px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.the-Description:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+.roll-tracking {
+    position: absolute;
+    top: 88%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #ff6a00, #ee0979);
+    color: white;
+    font-size: 1rem; 
+    font-weight: 600; 
+    padding: 0.5em 0.8em; 
+    border-radius: 15px; 
+    border: 2px solid rgba(255,255,255,0.4);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    
+    text-align: center;
+    letter-spacing: 0.5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(3px);
+}
+
+.roll-tracking mark {
+    background-color: rgba(255,255,255,0.6);
+    color: #000;
+    padding: 0.1em 0.2em;
+    border-radius: 4px;
+}
+
+.roll-tracking:hover {
+    transform: translateX(-50%) scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+.title {
+    font-size: 2rem;
+    font-weight: 800;
+    text-align: center;
+    background: linear-gradient(90deg, #ff6a00, #ee0979);
+    color: white;
+    border: 2px solid #ff6a00;
+    border-radius: 15px;
+    padding: 0.2em 0.5em;
+    box-shadow: 0 4px 15px rgba(255,106,0,0.5), 0 0 20px rgba(238,9,121,0.3);
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+}
+
+.title:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 25px rgba(255,106,0,0.7), 0 0 30px rgba(238,9,121,0.5);
+}
+.main-container{
+     border:40px solid rgb(59, 59, 147);
+}
+.congrats-message {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #00c853, #b2ff59);
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 700;
+  padding: 1em 2em;
+  border-radius: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+  animation: fadeInOut 3s ease-in-out forwards;
+  text-align: center;
+  z-index: 1000;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60%) scale(0.8);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -40%) scale(0.9);
+  }
+}
