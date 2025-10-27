@@ -1,5 +1,4 @@
 export default function Die(props) {
-  // create dots dynamically based on dice value
   const dots = Array.from({ length: props.value }, (_, i) => <span key={i} className="dot"></span>);
 
   const style = {
@@ -8,7 +7,7 @@ export default function Die(props) {
 
   return (
     <div
-      className={`die dots-${props.value}`} // 👈 adds class like dots-3, dots-5
+      className={`die dots-${props.value}`} 
       style={style}
       onClick={props.HoldDice}
     >
